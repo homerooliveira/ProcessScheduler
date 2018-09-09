@@ -13,22 +13,23 @@ public struct Process {
     public let arrivalTime: Int
     public let executionTime: Int
     public let priority: Int
-    public var currentExecutionTime: Int = 1
+    public var accessToInOutOperations: [Int]
+    public var currentExecutionTime: Int = 0
+    public var executionTimes: [Double] = []
     public var isFinished: Bool {
         return currentExecutionTime == executionTime
     }
-    public var executionTimes: [Double] = []
     
     public init(id: Int,
                 arrivalTime: Int,
                 executionTime: Int,
                 priority: Int,
-                currentExecutionTime: Int = 0){
+                accessToInOutOperations: [Int] = []){
         self.id = id
         self.arrivalTime = arrivalTime
         self.executionTime = executionTime
         self.priority = priority
-        self.currentExecutionTime = currentExecutionTime
+        self.accessToInOutOperations = accessToInOutOperations
     }
     
     public mutating func execute() {
