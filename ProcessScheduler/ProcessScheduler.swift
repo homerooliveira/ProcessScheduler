@@ -11,8 +11,9 @@ public final class ProcessScheduler {
     private var time = 1
     var executedProcesses: [Process] = []
     var processes: [Process] = []
-    var readyProcess: [[Process]] = Array(repeating: [], count: 9)
+    var readyProcesses: [[Process]] = Array(repeating: [], count: 9)
     var runningProcess: Process?
+    var blockedProcess: Process?
     var quatum: Int = 3
     var currentQuatum: Int = 0
     
@@ -35,11 +36,11 @@ public final class ProcessScheduler {
                     runningProcess = newProcess
                 } else if let runningProcess = self.runningProcess {
                     if newProcess.priority < runningProcess.priority {
-                        readyProcess[runningProcess.priority - 1].append(runningProcess)
+                        readyProcesses[runningProcess.priority - 1].append(runningProcess)
                         changeContext(&output)
                         self.runningProcess = newProcess
                     } else {
-                        readyProcess[newProcess.priority - 1].append(newProcess)
+                        readyProcesses[newProcess.priority - 1].append(newProcess)
                     }
                 }
             }
@@ -63,17 +64,17 @@ public final class ProcessScheduler {
             } else {
                 runningProcess.executionTimes.append(Double(time))
                 if !runningProcess.isFinished {
-                    readyProcess[runningProcess.priority - 1].append(runningProcess)
+                    readyProcesses[runningProcess.priority - 1].append(runningProcess)
                 } else {
                     self.executedProcesses.append(runningProcess)
                 }
                 
-                guard let index = readyProcess.index(where: { !$0.isEmpty }) else {
+                guard let index = readyProcesses.index(where: { !$0.isEmpty }) else {
                     self.runningProcess = nil
                     return
                 }
                 
-                self.runningProcess = readyProcess[index].removeFirst()
+                self.runningProcess = readyProcesses[index].removeFirst()
                 changeContext(&output)
             }
         } else {
