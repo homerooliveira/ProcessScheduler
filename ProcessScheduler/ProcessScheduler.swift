@@ -28,7 +28,7 @@ public final class ProcessScheduler {
         var output = ""
         
         while !processes.isEmpty || runningProcess != nil {
-            if arrivalProcess(at: time) {
+            if hasArrivalProcess(at: time) {
                 let newProcess = processes.removeFirst()
                 if runningProcess == nil {
                     changeContext(&output)
@@ -82,7 +82,7 @@ public final class ProcessScheduler {
         }
     }
     
-    func arrivalProcess(at time: Int) -> Bool {
+    func hasArrivalProcess(at time: Int) -> Bool {
         guard let process = processes.first else {
             return false
         }
