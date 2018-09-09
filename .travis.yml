@@ -1,5 +1,4 @@
-  language: python
-  python:
-    - "3.6"
-  script:
-    - python -m unittest
+language: objective-c
+xcode_project: ProcessScheduler.xcodeproj
+xcode_scheme: Dummy
+xcode_destination: macOs
