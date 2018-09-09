@@ -16,8 +16,13 @@ public struct Process {
     public var accessToInOutOperations: [Int]
     public var currentExecutionTime: Int = 0
     public var executionTimes: [Double] = []
+    
     public var isFinished: Bool {
         return currentExecutionTime == executionTime
+    }
+    
+    public var isTimeToInOutOperation: Bool {
+        return accessToInOutOperations.first(where: { $0 == currentExecutionTime }) != nil
     }
     
     public init(id: Int,

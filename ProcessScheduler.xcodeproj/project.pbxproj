@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8DBEF9A12144DD1B0069C80D /* ProcessesSchedulerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DBEF9A02144DD1B0069C80D /* ProcessesSchedulerTests.swift */; };
 		8DBEF9AF2144E1170069C80D /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DBEF9AE2144E1170069C80D /* main.swift */; };
 		8DBEF9C12144E1500069C80D /* ExecutionInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DBEF9BD2144E14F0069C80D /* ExecutionInput.swift */; };
 		8DBEF9C22144E1500069C80D /* ExecutionOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DBEF9BE2144E14F0069C80D /* ExecutionOutput.swift */; };
@@ -18,17 +17,8 @@
 		8DBEF9D52144E6740069C80D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DBEF9D32144E6740069C80D /* Main.storyboard */; };
 		8DBEF9D72144E6750069C80D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DBEF9D62144E6750069C80D /* Assets.xcassets */; };
 		8DBEF9DA2144E6750069C80D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DBEF9D82144E6750069C80D /* LaunchScreen.storyboard */; };
+		8DBEF9E12144F3FB0069C80D /* ProcessesSchedulerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DBEF9A02144DD1B0069C80D /* ProcessesSchedulerTests.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		8DBEF9DF2144E6840069C80D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8D22C77C2144A420007B2EAF /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 8DBEF9CC2144E6740069C80D;
-			remoteInfo = Dummy;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		8DBEF9AA2144E1170069C80D /* CopyFiles */ = {
@@ -44,9 +34,7 @@
 
 /* Begin PBXFileReference section */
 		8D22C7B12144D3BC007B2EAF /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		8DBEF99E2144DD1B0069C80D /* ProcessesSchedulerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProcessesSchedulerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DBEF9A02144DD1B0069C80D /* ProcessesSchedulerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessesSchedulerTests.swift; sourceTree = "<group>"; };
-		8DBEF9A22144DD1B0069C80D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8DBEF9AC2144E1170069C80D /* ProcessScheduler */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ProcessScheduler; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DBEF9AE2144E1170069C80D /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		8DBEF9BD2144E14F0069C80D /* ExecutionInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExecutionInput.swift; sourceTree = "<group>"; };
@@ -63,13 +51,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		8DBEF99B2144DD1B0069C80D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		8DBEF9A92144E1170069C80D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -91,7 +72,6 @@
 			isa = PBXGroup;
 			children = (
 				8DBEF9AD2144E1170069C80D /* ProcessScheduler */,
-				8DBEF99F2144DD1B0069C80D /* ProcessesSchedulerTests */,
 				8DBEF9CE2144E6740069C80D /* Dummy */,
 				8D22C7852144A420007B2EAF /* Products */,
 				8D22C7B02144D3BC007B2EAF /* Frameworks */,
@@ -101,7 +81,6 @@
 		8D22C7852144A420007B2EAF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8DBEF99E2144DD1B0069C80D /* ProcessesSchedulerTests.xctest */,
 				8DBEF9AC2144E1170069C80D /* ProcessScheduler */,
 				8DBEF9CD2144E6740069C80D /* Dummy.app */,
 			);
@@ -116,15 +95,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		8DBEF99F2144DD1B0069C80D /* ProcessesSchedulerTests */ = {
-			isa = PBXGroup;
-			children = (
-				8DBEF9A02144DD1B0069C80D /* ProcessesSchedulerTests.swift */,
-				8DBEF9A22144DD1B0069C80D /* Info.plist */,
-			);
-			path = ProcessesSchedulerTests;
-			sourceTree = "<group>";
-		};
 		8DBEF9AD2144E1170069C80D /* ProcessScheduler */ = {
 			isa = PBXGroup;
 			children = (
@@ -133,6 +103,7 @@
 				8DBEF9C02144E1500069C80D /* Process.swift */,
 				8DBEF9BF2144E1500069C80D /* ProcessScheduler.swift */,
 				8DBEF9AE2144E1170069C80D /* main.swift */,
+				8DBEF9A02144DD1B0069C80D /* ProcessesSchedulerTests.swift */,
 			);
 			path = ProcessScheduler;
 			sourceTree = "<group>";
@@ -153,24 +124,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8DBEF99D2144DD1B0069C80D /* ProcessesSchedulerTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 8DBEF9A52144DD1B0069C80D /* Build configuration list for PBXNativeTarget "ProcessesSchedulerTests" */;
-			buildPhases = (
-				8DBEF99A2144DD1B0069C80D /* Sources */,
-				8DBEF99B2144DD1B0069C80D /* Frameworks */,
-				8DBEF99C2144DD1B0069C80D /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				8DBEF9E02144E6840069C80D /* PBXTargetDependency */,
-			);
-			name = ProcessesSchedulerTests;
-			productName = ProcessesSchedulerTests;
-			productReference = 8DBEF99E2144DD1B0069C80D /* ProcessesSchedulerTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		8DBEF9AB2144E1170069C80D /* ProcessScheduler */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8DBEF9B02144E1170069C80D /* Build configuration list for PBXNativeTarget "ProcessScheduler" */;
@@ -215,10 +168,6 @@
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Homero Oliveira";
 				TargetAttributes = {
-					8DBEF99D2144DD1B0069C80D = {
-						CreatedOnToolsVersion = 9.4.1;
-						TestTargetID = 8DBEF9CC2144E6740069C80D;
-					};
 					8DBEF9AB2144E1170069C80D = {
 						CreatedOnToolsVersion = 9.4.1;
 					};
@@ -240,7 +189,6 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8DBEF99D2144DD1B0069C80D /* ProcessesSchedulerTests */,
 				8DBEF9AB2144E1170069C80D /* ProcessScheduler */,
 				8DBEF9CC2144E6740069C80D /* Dummy */,
 			);
@@ -248,13 +196,6 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		8DBEF99C2144DD1B0069C80D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		8DBEF9CB2144E6740069C80D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -268,19 +209,12 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		8DBEF99A2144DD1B0069C80D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8DBEF9A12144DD1B0069C80D /* ProcessesSchedulerTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		8DBEF9A82144E1170069C80D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				8DBEF9AF2144E1170069C80D /* main.swift in Sources */,
+				8DBEF9E12144F3FB0069C80D /* ProcessesSchedulerTests.swift in Sources */,
 				8DBEF9C42144E1500069C80D /* Process.swift in Sources */,
 				8DBEF9C22144E1500069C80D /* ExecutionOutput.swift in Sources */,
 				8DBEF9C12144E1500069C80D /* ExecutionInput.swift in Sources */,
@@ -298,14 +232,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		8DBEF9E02144E6840069C80D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 8DBEF9CC2144E6740069C80D /* Dummy */;
-			targetProxy = 8DBEF9DF2144E6840069C80D /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		8DBEF9D32144E6740069C80D /* Main.storyboard */ = {
@@ -440,48 +366,6 @@
 			};
 			name = Release;
 		};
-		8DBEF9A62144DD1B0069C80D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Manual;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 6UW4NKHZQ4;
-				INFOPLIST_FILE = ProcessesSchedulerTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.pucrs.sisop.ProcessesSchedulerTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Dummy.app/Dummy";
-			};
-			name = Debug;
-		};
-		8DBEF9A72144DD1B0069C80D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Manual;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = ProcessesSchedulerTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.pucrs.sisop.ProcessesSchedulerTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Dummy.app/Dummy";
-			};
-			name = Release;
-		};
 		8DBEF9B12144E1170069C80D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -555,15 +439,6 @@
 			buildConfigurations = (
 				8D22C7892144A420007B2EAF /* Debug */,
 				8D22C78A2144A420007B2EAF /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		8DBEF9A52144DD1B0069C80D /* Build configuration list for PBXNativeTarget "ProcessesSchedulerTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				8DBEF9A62144DD1B0069C80D /* Debug */,
-				8DBEF9A72144DD1B0069C80D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

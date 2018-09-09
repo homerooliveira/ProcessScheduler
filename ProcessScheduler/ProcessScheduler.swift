@@ -16,6 +16,7 @@ public final class ProcessScheduler {
     var blockedProcess: Process?
     var quatum: Int = 3
     var currentQuatum: Int = 0
+    var inOutQuantum: Int = 4
     
     public init() {
     }
@@ -28,7 +29,7 @@ public final class ProcessScheduler {
         
         var output = ""
         
-        while !processes.isEmpty || runningProcess != nil {
+        while !processes.isEmpty || runningProcess != nil || blockedProcess != nil {
             if hasArrivalProcess(at: time) {
                 let newProcess = processes.removeFirst()
                 if runningProcess == nil {
@@ -50,36 +51,55 @@ public final class ProcessScheduler {
         return ExecutionOutput(processes: executedProcesses, output: output)
     }
     
+    
+    
     func executeCurrentProcess( _ output: inout String) {
         if var runningProcess = runningProcess {
-            if !runningProcess.isFinished && currentQuatum < quatum {
-                output += runningProcess.id.description
-                runningProcess.execute()
-                if currentQuatum == 0 {
-                    runningProcess.executionTimes.append(Double(time))
-                }
-                self.runningProcess = runningProcess
+            runProcess(&runningProcess, &output)
+        } else if let blockedProcess = self.blockedProcess {
+            if currentQuatum < inOutQuantum {
                 currentQuatum += 1
-                time += 1
+                output += "-"
             } else {
-                runningProcess.executionTimes.append(Double(time))
-                if !runningProcess.isFinished {
-                    readyProcesses[runningProcess.priority - 1].append(runningProcess)
-                } else {
-                    self.executedProcesses.append(runningProcess)
-                }
-                
-                guard let index = readyProcesses.index(where: { !$0.isEmpty }) else {
-                    self.runningProcess = nil
-                    return
-                }
-                
-                self.runningProcess = readyProcesses[index].removeFirst()
+                self.runningProcess = blockedProcess
+                self.blockedProcess = nil
                 changeContext(&output)
             }
         } else {
             output += "-"
             time += 1
+        }
+    }
+    
+    func runProcess(_ runningProcess: inout Process, _ output: inout String) {
+        if !runningProcess.isFinished && currentQuatum < quatum {
+            output += runningProcess.id.description
+            runningProcess.execute()
+            if currentQuatum == 0 {
+                runningProcess.executionTimes.append(Double(time))
+            }
+            self.runningProcess = runningProcess
+            currentQuatum += 1
+            time += 1
+            if runningProcess.isTimeToInOutOperation {
+                self.runningProcess = nil
+                self.blockedProcess = runningProcess
+                changeContext(&output)
+            }
+        } else {
+            if !runningProcess.isFinished {
+                readyProcesses[runningProcess.priority - 1].append(runningProcess)
+            } else {
+                self.executedProcesses.append(runningProcess)
+            }
+            
+            guard let index = readyProcesses.index(where: { !$0.isEmpty }) else {
+                self.runningProcess = nil
+                return
+            }
+            
+            self.runningProcess = readyProcesses[index].removeFirst()
+            changeContext(&output)
         }
     }
     
