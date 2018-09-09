@@ -13,9 +13,9 @@ public struct Process {
     public let arrivalTime: Int
     public let executionTime: Int
     public let priority: Int
-    public var accessToInOutOperations: [Int]
     public var currentExecutionTime: Int = 0
     public var executionTimes: [Double] = []
+    public var accessToInOutOperations: [Int] = []
     
     public var isFinished: Bool {
         return currentExecutionTime == executionTime
