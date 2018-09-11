@@ -1,11 +1,11 @@
+////
+////  ProcessesSchedulerTests.swift
+////  ProcessesSchedulerTests
+////
+////  Created by Homero Oliveira on 09/09/18.
+////  Copyright © 2018 Homero Oliveira. All rights reserved.
+////
 //
-//  ProcessesSchedulerTests.swift
-//  ProcessesSchedulerTests
-//
-//  Created by Homero Oliveira on 09/09/18.
-//  Copyright © 2018 Homero Oliveira. All rights reserved.
-//
-
 import XCTest
 @testable import Dummy
 
@@ -28,7 +28,7 @@ class ProcessesSchedulerTests: XCTestCase {
 
         let output = processScheduler.execute(input: input)
 
-        XCTAssertEqual("---C1C222C222C222C222C111C111C111", output.output)
+        XCTAssertEqual("---C1C222C222C222C222C11C111C111C1", output.output)
     }
 
 }

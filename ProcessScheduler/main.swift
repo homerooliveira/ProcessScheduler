@@ -20,3 +20,32 @@ var proccess = [
 let processScheduller = ProcessScheduler()
 let input = ExecutionInput(processes: proccess, quantum: 3)
 print(processScheduller.execute(input: input).output)
+
+
+//let path = "/Users/homerooliveira/College/ProcessesScheduler/ProcessScheduler/test1.txt"
+//
+//if let contents = try? String(contentsOfFile: path) {
+//    let contentsByLine = contents.split(separator: "\n")
+//    let quantum = Int(contentsByLine[1])
+//    let rest = contentsByLine.dropFirst(2)
+//    let processes = rest.enumerated().compactMap { (arg) -> Process? in
+//        let (index, content) = arg
+//        let numbers = content.split(separator: " ")
+//            .compactMap { Int($0) }
+//
+//        guard numbers.count >= 3 else { return nil }
+//        return Process(id: index + 1,
+//                       arrivalTime: numbers[0],
+//                       executionTime: numbers[1],
+//                       priority: numbers[2],
+//                       accessToInOutOperations: Array(numbers.dropFirst(3)))
+//        }
+//    print(ExecutionInput(processes: processes, quantum: quantum!))
+//}
+//
+//precedencegroup Group { associativity: left }
+//infix operator >>>: Group
+//func >>> <A, B, C>(_ lhs: @escaping (A) -> B,
+//                   _ rhs: @escaping (B) -> C) -> (A) -> C {
+//    return { rhs(lhs($0)) }
+//}

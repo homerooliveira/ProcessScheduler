@@ -33,13 +33,13 @@ public final class ProcessScheduler {
             if hasArrivalProcess(at: time) {
                 let newProcess = processes.removeFirst()
                 if runningProcess == nil {
-                    changeContext(&output)
                     runningProcess = newProcess
+                    changeContext(&output)
                 } else if let runningProcess = self.runningProcess {
                     if newProcess.priority < runningProcess.priority {
                         readyProcesses[runningProcess.priority - 1].append(runningProcess)
-                        changeContext(&output)
                         self.runningProcess = newProcess
+                        changeContext(&output)
                     } else {
                         readyProcesses[newProcess.priority - 1].append(newProcess)
                     }
@@ -112,7 +112,7 @@ public final class ProcessScheduler {
     
     func changeContext(_ output: inout String) {
         output += "C"
-        currentQuatum = 0
+        currentQuatum = 0 + (runningProcess?.currentExecutionTime ?? quatum) % quatum
         time += 1
     }
 }
