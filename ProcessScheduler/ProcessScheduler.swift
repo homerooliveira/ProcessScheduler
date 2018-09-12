@@ -33,13 +33,11 @@ public final class ProcessScheduler {
             if hasArrivalProcess(at: time) {
                 let newProcess = processes.removeFirst()
                 if runningProcess == nil {
-                    runningProcess = newProcess
-                    changeContext(&output)
+                    changeContext(to: newProcess, &output)
                 } else if let runningProcess = self.runningProcess {
                     if newProcess.priority < runningProcess.priority {
                         readyProcesses[runningProcess.priority - 1].append(runningProcess)
-                        self.runningProcess = newProcess
-                        changeContext(&output)
+                        changeContext(to: newProcess, &output)
                     } else {
                         readyProcesses[newProcess.priority - 1].append(newProcess)
                     }
@@ -61,9 +59,8 @@ public final class ProcessScheduler {
                 currentQuatum += 1
                 output += "-"
             } else {
-                self.runningProcess = blockedProcess
                 self.blockedProcess = nil
-                changeContext(&output)
+                changeContext(to: blockedProcess, &output)
             }
         } else {
             output += "-"
@@ -82,9 +79,8 @@ public final class ProcessScheduler {
             currentQuatum += 1
             time += 1
             if runningProcess.isTimeToInOutOperation {
-                self.runningProcess = nil
                 self.blockedProcess = runningProcess
-                changeContext(&output)
+                changeContext(to: nil, &output)
             }
         } else {
             if !runningProcess.isFinished {
@@ -93,13 +89,14 @@ public final class ProcessScheduler {
                 self.executedProcesses.append(runningProcess)
             }
             
+            self.runningProcess = nil
+            
             guard let index = readyProcesses.index(where: { !$0.isEmpty }) else {
-                self.runningProcess = nil
                 return
             }
             
-            self.runningProcess = readyProcesses[index].removeFirst()
-            changeContext(&output)
+            let process = readyProcesses[index].removeFirst()
+            changeContext(to: process, &output)
         }
     }
     
@@ -110,9 +107,11 @@ public final class ProcessScheduler {
         return process.arrivalTime + 1 <= time
     }
     
-    func changeContext(_ output: inout String) {
+    func changeContext(to process: Process?, _ output: inout String) {
         output += "C"
-        currentQuatum = 0 + (runningProcess?.currentExecutionTime ?? quatum) % quatum
+        runningProcess = process
+        let lastCurrentQuantum = (runningProcess?.currentExecutionTime ?? quatum) % quatum
+        currentQuatum = 0 + lastCurrentQuantum
         time += 1
     }
 }

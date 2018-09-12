@@ -30,5 +30,18 @@ class ProcessesSchedulerTests: XCTestCase {
 
         XCTAssertEqual("---C1C222C222C222C222C11C111C111C1", output.output)
     }
+    
+    func testFromMoodle() {
+        let processes = [
+            Process(id: 1, arrivalTime: 3, executionTime: 10, priority: 2),
+            Process(id: 2, arrivalTime: 5, executionTime: 12, priority: 1)
+        ]
+        
+        let input = ExecutionInput(processes: processes, quantum: 3)
+        
+        let output = processScheduler.execute(input: input)
+        
+        XCTAssertEqual("---C1C222C222C222C222C11C111C111C1", output.output)
+    }
 
 }
