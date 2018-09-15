@@ -72,9 +72,6 @@ public final class ProcessScheduler {
         if !runningProcess.isFinished && currentQuatum < quatum {
             output += runningProcess.id.description
             runningProcess.execute()
-            if currentQuatum == 0 {
-                runningProcess.executionTimes.append(Double(time))
-            }
             self.runningProcess = runningProcess
             currentQuatum += 1
             time += 1
@@ -113,5 +110,12 @@ public final class ProcessScheduler {
         let lastCurrentQuantum = (runningProcess?.currentExecutionTime ?? quatum) % quatum
         currentQuatum = 0 + lastCurrentQuantum
         time += 1
+        afterChangeContext()
+    }
+    
+    func afterChangeContext() {
+        guard var runningProcess = self.runningProcess else { return }
+        runningProcess.executionTimes.append(Double(time))
+        self.runningProcess = runningProcess
     }
 }
