@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Process {
+public struct Process: Equatable {
     public let id: Int
     public let arrivalTime: Int
     public let executionTime: Int
@@ -38,6 +38,12 @@ public struct Process {
     }
     
     public mutating func execute() {
-        self.currentExecutionTime += 1
+        currentExecutionTime += 1
+    }
+}
+
+extension Process: Comparable {
+    public static func < (lhs: Process, rhs: Process) -> Bool {
+        return lhs.priority <= rhs.priority
     }
 }
