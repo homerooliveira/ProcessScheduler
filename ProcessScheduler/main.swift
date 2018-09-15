@@ -19,7 +19,9 @@ var proccess = [
 
 let processScheduller = ProcessScheduler()
 let input = ExecutionInput(processes: proccess, quantum: 3)
-print(processScheduller.execute(input: input).output)
+let output = processScheduller.execute(input: input)
+print(output.output)
+output.processes.forEach { print($0) }
 
 
 //let path = "/Users/homerooliveira/College/ProcessesScheduler/ProcessScheduler/test1.txt"

@@ -46,7 +46,7 @@ public final class ProcessScheduler {
             
             executeCurrentProcess(&output)
         }
-        return ExecutionOutput(processes: executedProcesses, output: output)
+        return ExecutionOutput(processes: executedProcesses.sorted(by: { $0.id < $1.id }), output: output)
     }
     
     
