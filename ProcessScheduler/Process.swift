@@ -16,6 +16,7 @@ public struct Process: Equatable {
     public var currentExecutionTime: Int = 0
     public var executionTimes: [Double] = []
     public var accessToInOutOperations: [Int] = []
+    public var currentExecutionInOut: Int = 0
     
     public var isFinished: Bool {
         return currentExecutionTime == executionTime
@@ -29,7 +30,7 @@ public struct Process: Equatable {
                 arrivalTime: Int,
                 executionTime: Int,
                 priority: Int,
-                accessToInOutOperations: [Int] = []){
+                accessToInOutOperations: [Int] = []) {
         self.id = id
         self.arrivalTime = arrivalTime
         self.executionTime = executionTime
@@ -39,6 +40,12 @@ public struct Process: Equatable {
     
     public mutating func execute() {
         currentExecutionTime += 1
+    }
+    
+    public func executeInOutOperation() -> Process {
+        var newProcess = self
+        newProcess.currentExecutionInOut += 1
+        return newProcess
     }
 }
 

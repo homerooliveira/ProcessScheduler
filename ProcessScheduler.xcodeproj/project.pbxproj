@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8D785552214EF9A000D5125D /* Sequence+forEachPerform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDDB693214EE5E20087B27E /* Sequence+forEachPerform.swift */; };
+		8D785553214EF9A400D5125D /* Array+sum+average.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDDB695214EE6510087B27E /* Array+sum+average.swift */; };
+		8D785554214EF9A600D5125D /* Array+removeAll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDDB691214E29010087B27E /* Array+removeAll.swift */; };
 		8DBEF9AF2144E1170069C80D /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DBEF9AE2144E1170069C80D /* main.swift */; };
 		8DBEF9C12144E1500069C80D /* ExecutionInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DBEF9BD2144E14F0069C80D /* ExecutionInput.swift */; };
 		8DBEF9C22144E1500069C80D /* ExecutionOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DBEF9BE2144E14F0069C80D /* ExecutionOutput.swift */; };
@@ -23,6 +26,9 @@
 		8DBEF9F42144F9560069C80D /* ProcessScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DBEF9BF2144E1500069C80D /* ProcessScheduler.swift */; };
 		8DBEFA0C2147F3940069C80D /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8DBEFA0B2147F3940069C80D /* Info.plist */; };
 		8DBEFA0D2147F39C0069C80D /* ProcessSchedulerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DBEF9E82144F9140069C80D /* ProcessSchedulerTests.swift */; };
+		8DDDB692214E29010087B27E /* Array+removeAll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDDB691214E29010087B27E /* Array+removeAll.swift */; };
+		8DDDB694214EE5E20087B27E /* Sequence+forEachPerform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDDB693214EE5E20087B27E /* Sequence+forEachPerform.swift */; };
+		8DDDB696214EE6510087B27E /* Array+sum+average.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDDB695214EE6510087B27E /* Array+sum+average.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +72,9 @@
 		8DBEF9F62145CCDE0069C80D /* test1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test1.txt; sourceTree = SOURCE_ROOT; };
 		8DBEFA012147F37B0069C80D /* ProcessSchedulerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProcessSchedulerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DBEFA0B2147F3940069C80D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8DDDB691214E29010087B27E /* Array+removeAll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+removeAll.swift"; sourceTree = "<group>"; };
+		8DDDB693214EE5E20087B27E /* Sequence+forEachPerform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+forEachPerform.swift"; sourceTree = "<group>"; };
+		8DDDB695214EE6510087B27E /* Array+sum+average.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+sum+average.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +140,9 @@
 				8DBEF9C02144E1500069C80D /* Process.swift */,
 				8DBEF9BF2144E1500069C80D /* ProcessScheduler.swift */,
 				8DBEF9AE2144E1170069C80D /* main.swift */,
+				8DDDB691214E29010087B27E /* Array+removeAll.swift */,
+				8DDDB693214EE5E20087B27E /* Sequence+forEachPerform.swift */,
+				8DDDB695214EE6510087B27E /* Array+sum+average.swift */,
 			);
 			path = ProcessScheduler;
 			sourceTree = "<group>";
@@ -167,6 +179,7 @@
 				8DBEF9A82144E1170069C80D /* Sources */,
 				8DBEF9A92144E1170069C80D /* Frameworks */,
 				8DBEF9AA2144E1170069C80D /* CopyFiles */,
+				8DDDB690214D79880087B27E /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -275,14 +288,33 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		8DDDB690214D79880087B27E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		8DBEF9A82144E1170069C80D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DDDB694214EE5E20087B27E /* Sequence+forEachPerform.swift in Sources */,
 				8DBEF9AF2144E1170069C80D /* main.swift in Sources */,
 				8DBEF9C42144E1500069C80D /* Process.swift in Sources */,
+				8DDDB696214EE6510087B27E /* Array+sum+average.swift in Sources */,
 				8DBEF9C22144E1500069C80D /* ExecutionOutput.swift in Sources */,
+				8DDDB692214E29010087B27E /* Array+removeAll.swift in Sources */,
 				8DBEF9C12144E1500069C80D /* ExecutionInput.swift in Sources */,
 				8DBEF9C32144E1500069C80D /* ProcessScheduler.swift in Sources */,
 			);
@@ -292,12 +324,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D785552214EF9A000D5125D /* Sequence+forEachPerform.swift in Sources */,
 				8DBEF9F12144F9560069C80D /* ExecutionInput.swift in Sources */,
 				8DBEF9F32144F9560069C80D /* Process.swift in Sources */,
 				8DBEF9F22144F9560069C80D /* ExecutionOutput.swift in Sources */,
 				8DBEF9D22144E6740069C80D /* ViewController.swift in Sources */,
 				8DBEF9D02144E6740069C80D /* AppDelegate.swift in Sources */,
+				8D785554214EF9A600D5125D /* Array+removeAll.swift in Sources */,
 				8DBEF9F42144F9560069C80D /* ProcessScheduler.swift in Sources */,
+				8D785553214EF9A400D5125D /* Array+sum+average.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,3 +7,14 @@
 //
 
 import Foundation
+
+extension Sequence {
+    /// Perform a side effect for each element in `self`.
+    @discardableResult
+    func onEach(_ body: (Element) throws -> ())
+        rethrows -> Self
+    {
+        try forEach(body)
+        return self
+    }
+}

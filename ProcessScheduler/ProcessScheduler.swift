@@ -13,7 +13,7 @@ public final class ProcessScheduler {
     var processes: [Process] = []
     var readyProcesses: [[Process]] = Array(repeating: [], count: 9)
     var runningProcess: Process?
-    var blockedProcess: Process?
+    var blockedProcess: [Process] = []
     var quatum: Int = 3
     var currentQuatum: Int = 0
     var inOutQuantum: Int = 4
@@ -29,7 +29,7 @@ public final class ProcessScheduler {
         
         var output = ""
         
-        while !processes.isEmpty || runningProcess != nil || blockedProcess != nil {
+        while !processes.isEmpty || runningProcess != nil || !blockedProcess.isEmpty {
             if hasArrivalProcess(at: time) {
                 let newProcess = processes.removeFirst()
                 if runningProcess == nil {
@@ -44,27 +44,37 @@ public final class ProcessScheduler {
                 }
             }
             
+            executeBlockedProcess()
             executeCurrentProcess(&output)
         }
         return ExecutionOutput(processes: executedProcesses.sorted(by: { $0.id < $1.id }), output: output)
     }
-    
-    
+
+    func executeBlockedProcess() {
+        var newBlockedProcesses = blockedProcess.map { $0.executeInOutOperation() }
+        let suffix = newBlockedProcesses.partition { $0.currentExecutionInOut == inOutQuantum }
+        newBlockedProcesses[suffix...].forEach { (process) in
+            var newProcess = process
+            newProcess.currentExecutionInOut = 0
+            readyProcesses[process.priority - 1].append(newProcess)
+        }
+        newBlockedProcesses.removeSubrange(suffix...)
+        
+        self.blockedProcess = newBlockedProcesses
+    }
     
     func executeCurrentProcess( _ output: inout String) {
         if var runningProcess = runningProcess {
             runProcess(&runningProcess, &output)
-        } else if let blockedProcess = self.blockedProcess {
-            if currentQuatum < inOutQuantum {
-                currentQuatum += 1
-                output += "-"
-            } else {
-                self.blockedProcess = nil
-                changeContext(to: blockedProcess, &output)
-            }
         } else {
             output += "-"
             time += 1
+        }
+        
+        if runningProcess == nil,
+            let index = readyProcesses.index(where: { !$0.isEmpty }) {
+            let process = readyProcesses[index].removeFirst()
+            changeContext(to: process, &output)
         }
     }
     
@@ -76,11 +86,19 @@ public final class ProcessScheduler {
             currentQuatum += 1
             time += 1
             if runningProcess.isTimeToInOutOperation {
-                self.blockedProcess = runningProcess
-                changeContext(to: nil, &output)
+                runningProcess.executionTimes.append(Double(time))
+                blockedProcess.append(runningProcess)
+                if let index = readyProcesses.index(where: { !$0.isEmpty }) {
+                    let process = readyProcesses[index].removeFirst()
+                    changeContext(to: process, &output)
+                } else {
+                    changeContext(to: nil, &output)
+                }
+                
             }
         } else {
             if !runningProcess.isFinished {
+                runningProcess.executionTimes.append(Double(time))
                 readyProcesses[runningProcess.priority - 1].append(runningProcess)
             } else {
                 self.executedProcesses.append(runningProcess)
@@ -105,16 +123,20 @@ public final class ProcessScheduler {
     }
     
     func changeContext(to process: Process?, _ output: inout String) {
-        output += "C"
+        if output.last != "C" {
+            output += "C"
+            time += 1
+        }
         runningProcess = process
         let lastCurrentQuantum = (runningProcess?.currentExecutionTime ?? quatum) % quatum
         currentQuatum = 0 + lastCurrentQuantum
-        time += 1
         afterChangeContext()
+        executeBlockedProcess()
     }
     
     func afterChangeContext() {
         guard var runningProcess = self.runningProcess else { return }
+        let time = Double(self.time)
         runningProcess.executionTimes.append(Double(time))
         self.runningProcess = runningProcess
     }
