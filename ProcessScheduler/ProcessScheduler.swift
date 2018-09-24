@@ -49,7 +49,7 @@ public final class ProcessScheduler {
         }
         return ExecutionOutput(processes: executedProcesses.sorted(by: { $0.id < $1.id }), output: output)
     }
-
+    
     func executeBlockedProcess() {
         var newBlockedProcesses = blockedProcess.map { $0.executeInOutOperation() }
         let suffix = newBlockedProcesses.partition { $0.currentExecutionInOut == inOutQuantum }
@@ -66,6 +66,7 @@ public final class ProcessScheduler {
     func executeCurrentProcess( _ output: inout String) {
         if var runningProcess = runningProcess {
             runProcess(&runningProcess, &output)
+            return
         } else {
             output += "-"
             time += 1
@@ -123,10 +124,8 @@ public final class ProcessScheduler {
     }
     
     func changeContext(to process: Process?, _ output: inout String) {
-        if output.last != "C" {
-            output += "C"
-            time += 1
-        }
+        output += "C"
+        time += 1
         runningProcess = process
         let lastCurrentQuantum = (runningProcess?.currentExecutionTime ?? quatum) % quatum
         currentQuatum = 0 + lastCurrentQuantum

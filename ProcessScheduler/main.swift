@@ -18,8 +18,11 @@ import Foundation
 //]
 
 var proccess = [
-    Process(id: 5, arrivalTime: 1, executionTime: 3, priority: 5,
-            accessToInOutOperations: []),
+    Process(id: 1, arrivalTime: 1, executionTime: 4, priority: 1,
+            accessToInOutOperations: [2]),
+    Process(id: 2, arrivalTime: 2, executionTime: 4, priority: 1,
+            accessToInOutOperations: [2]),
+    
 //            Process(id: 6, arrivalTime: 2, executionTime: 8, priority: 6, accessToInOutOperations: [3])
 ]
 
