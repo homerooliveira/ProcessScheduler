@@ -18,10 +18,12 @@ public struct ExecutionOutput {
         self.processes = processes
         self.output = output
         
+        let numberOfProcesses = Double(processes.count)
+        
         let sumOfResponseTime = processes
             .compactMap { $0.executionTimes.first }
         
-        averageResponseTime = (sumOfResponseTime.sum - Double(processes.count)) / Double(processes.count)
+        averageResponseTime = (sumOfResponseTime.sum - numberOfProcesses) / numberOfProcesses
         
         let sumOfWaitingTime = processes
             .map { (process) in
@@ -36,6 +38,6 @@ public struct ExecutionOutput {
             .map { (arg) -> Double in
                 let (responseTime, waitingTime) = arg
                 return (responseTime + waitingTime.sum - 1) / Double(waitingTime.count + 1)
-        }.sum 
+        }.sum / numberOfProcesses
     }
 }

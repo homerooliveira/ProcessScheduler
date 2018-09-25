@@ -14,7 +14,7 @@ import ProcessSchedulerCore
 //let input = ExecutionInput(processes: proccess, quantum: 3)
 
 
-guard let fileUrl = Bundle.main.url(forResource: "trab-so1-teste1SR", withExtension: "txt") else { fatalError() }
+guard let fileUrl = Bundle.main.url(forResource: "trab-so1-teste4SR", withExtension: "txt") else { fatalError() }
 
 let input = FileReader(fileUrl: fileUrl).executionInput
 
