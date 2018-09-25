@@ -10,7 +10,6 @@
 		8D2ED6502159E4D300BF3380 /* ProcessSchedulerCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D2ED6422159E4D300BF3380 /* ProcessSchedulerCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8D2ED66F2159E52A00BF3380 /* ExecutionOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2ED6672159E52A00BF3380 /* ExecutionOutput.swift */; };
 		8D2ED6702159E52A00BF3380 /* ExecutionInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2ED6682159E52A00BF3380 /* ExecutionInput.swift */; };
-		8D2ED6712159E52A00BF3380 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2ED6692159E52A00BF3380 /* main.swift */; };
 		8D2ED6722159E52A00BF3380 /* Process.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2ED66A2159E52A00BF3380 /* Process.swift */; };
 		8D2ED6732159E52A00BF3380 /* Sequence+forEachPerform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2ED66B2159E52A00BF3380 /* Sequence+forEachPerform.swift */; };
 		8D2ED6742159E52B00BF3380 /* Array+sum+average.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2ED66C2159E52A00BF3380 /* Array+sum+average.swift */; };
@@ -18,6 +17,7 @@
 		8D2ED6762159E52B00BF3380 /* Array+removeAll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2ED66E2159E52A00BF3380 /* Array+removeAll.swift */; };
 		8D2ED67F2159E5D700BF3380 /* ProcessSchedulerCoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2ED67E2159E5D700BF3380 /* ProcessSchedulerCoreTests.swift */; };
 		8D2ED6812159E5D700BF3380 /* ProcessSchedulerCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D2ED6402159E4D200BF3380 /* ProcessSchedulerCore.framework */; };
+		8D2ED6892159E67800BF3380 /* FileReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2ED6882159E67800BF3380 /* FileReader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +36,6 @@
 		8D2ED6432159E4D300BF3380 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D2ED6672159E52A00BF3380 /* ExecutionOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExecutionOutput.swift; sourceTree = "<group>"; };
 		8D2ED6682159E52A00BF3380 /* ExecutionInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExecutionInput.swift; sourceTree = "<group>"; };
-		8D2ED6692159E52A00BF3380 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		8D2ED66A2159E52A00BF3380 /* Process.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Process.swift; sourceTree = "<group>"; };
 		8D2ED66B2159E52A00BF3380 /* Sequence+forEachPerform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Sequence+forEachPerform.swift"; sourceTree = "<group>"; };
 		8D2ED66C2159E52A00BF3380 /* Array+sum+average.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+sum+average.swift"; sourceTree = "<group>"; };
@@ -45,6 +44,8 @@
 		8D2ED67C2159E5D700BF3380 /* ProcessSchedulerCoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProcessSchedulerCoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D2ED67E2159E5D700BF3380 /* ProcessSchedulerCoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessSchedulerCoreTests.swift; sourceTree = "<group>"; };
 		8D2ED6802159E5D700BF3380 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8D2ED6872159E60100BF3380 /* ProcessScheduler.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = ProcessScheduler.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		8D2ED6882159E67800BF3380 /* FileReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileReader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +70,7 @@
 		8D2ED6172159E3EE00BF3380 = {
 			isa = PBXGroup;
 			children = (
+				8D2ED6872159E60100BF3380 /* ProcessScheduler.playground */,
 				8D2ED6412159E4D300BF3380 /* ProcessSchedulerCore */,
 				8D2ED67D2159E5D700BF3380 /* ProcessSchedulerCoreTests */,
 				8D2ED6222159E3EE00BF3380 /* Products */,
@@ -87,7 +89,7 @@
 		8D2ED6412159E4D300BF3380 /* ProcessSchedulerCore */ = {
 			isa = PBXGroup;
 			children = (
-				8D2ED6692159E52A00BF3380 /* main.swift */,
+				8D2ED6882159E67800BF3380 /* FileReader.swift */,
 				8D2ED6682159E52A00BF3380 /* ExecutionInput.swift */,
 				8D2ED6672159E52A00BF3380 /* ExecutionOutput.swift */,
 				8D2ED66A2159E52A00BF3380 /* Process.swift */,
@@ -187,7 +189,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 8D2ED61B2159E3EE00BF3380 /* Build configuration list for PBXProject "ProcessSchedulerCore" */;
+			buildConfigurationList = 8D2ED61B2159E3EE00BF3380 /* Build configuration list for PBXProject "ProcessScheduler" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -230,8 +232,8 @@
 				8D2ED6732159E52A00BF3380 /* Sequence+forEachPerform.swift in Sources */,
 				8D2ED6762159E52B00BF3380 /* Array+removeAll.swift in Sources */,
 				8D2ED66F2159E52A00BF3380 /* ExecutionOutput.swift in Sources */,
+				8D2ED6892159E67800BF3380 /* FileReader.swift in Sources */,
 				8D2ED6702159E52A00BF3380 /* ExecutionInput.swift in Sources */,
-				8D2ED6712159E52A00BF3380 /* main.swift in Sources */,
 				8D2ED6722159E52A00BF3380 /* Process.swift in Sources */,
 				8D2ED6742159E52B00BF3380 /* Array+sum+average.swift in Sources */,
 				8D2ED6752159E52B00BF3380 /* ProcessScheduler.swift in Sources */,
@@ -469,7 +471,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8D2ED61B2159E3EE00BF3380 /* Build configuration list for PBXProject "ProcessSchedulerCore" */ = {
+		8D2ED61B2159E3EE00BF3380 /* Build configuration list for PBXProject "ProcessScheduler" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8D2ED6332159E3EF00BF3380 /* Debug */,
