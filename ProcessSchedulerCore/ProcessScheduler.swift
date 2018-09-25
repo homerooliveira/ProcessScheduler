@@ -87,7 +87,6 @@ public final class ProcessScheduler {
             currentQuantum += 1
             time += 1
             if runningProcess.isTimeToInOutOperation {
-                runningProcess.executionTimes.append(Double(time))
                 blockedProcess.append(runningProcess)
                 if let index = readyProcesses.index(where: { !$0.isEmpty }) {
                     let process = readyProcesses[index].removeFirst()
@@ -108,6 +107,9 @@ public final class ProcessScheduler {
             self.runningProcess = nil
             
             guard let index = readyProcesses.index(where: { !$0.isEmpty }) else {
+                if !processes.isEmpty || !blockedProcess.isEmpty {
+                    changeContext(to: nil, &output)
+                }
                 return
             }
             

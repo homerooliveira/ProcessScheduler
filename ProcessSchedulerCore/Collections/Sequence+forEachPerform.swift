@@ -17,4 +17,11 @@ extension Sequence {
         try forEach(body)
         return self
     }
+    
+    func log(identifier: String = "") -> Self {
+        forEach { (element) in
+            print("\(identifier) - \(element)")
+        }
+        return self
+    }
 }

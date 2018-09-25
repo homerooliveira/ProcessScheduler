@@ -13,8 +13,7 @@ import ProcessSchedulerCore
 //]
 //let input = ExecutionInput(processes: proccess, quantum: 3)
 
-
-guard let fileUrl = Bundle.main.url(forResource: "trab-so1-teste0SR", withExtension: "txt") else { fatalError() }
+guard let fileUrl = Bundle.main.url(forResource: "trab-so1-teste2SR", withExtension: "txt") else { fatalError() }
 
 let input = FileReader(fileUrl: fileUrl).executionInput
 
@@ -23,5 +22,5 @@ let processScheduller = ProcessScheduler()
 let output = processScheduller.execute(input: input)
 
 print(output.output)
-print("average wait Time = \(output.averageWaitTime)")
 print("average response Time = \(output.averageResponseTime)")
+print("average wait Time = \(output.averageWaitTime)")
