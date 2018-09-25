@@ -30,8 +30,7 @@ public struct ExecutionOutput {
                 return process.executionTimes
                         .dropFirst()
                         .chunked(by: 2)
-                        .map { $0.last! - $0.first! }
-                
+                        .map { $0.last! - $0.first! }                
         }
 
         averageWaitTime = zip(sumOfResponseTime, sumOfWaitingTime)
