@@ -14,17 +14,17 @@ public final class ProcessScheduler {
     var readyProcesses: [[Process]] = Array(repeating: [], count: 9)
     var runningProcess: Process?
     var blockedProcess: [Process] = []
-    var quatum: Int = 3
-    var currentQuatum: Int = 0
+    var quantum: Int = 3
+    var currentQuantum: Int = 0
     var inOutQuantum: Int = 4
     
     public init() {
     }
     
     public func execute(input: ExecutionInput) -> ExecutionOutput {
-        quatum = input.quantum
+        quantum = input.quantum
         processes = input.processes
-        currentQuatum = 0
+        currentQuantum = 0
         time = 1
         
         var output = ""
@@ -80,11 +80,11 @@ public final class ProcessScheduler {
     }
     
     func runProcess(_ runningProcess: inout Process, _ output: inout String) {
-        if !runningProcess.isFinished && currentQuatum < quatum {
+        if !runningProcess.isFinished && currentQuantum < quantum {
             output += runningProcess.id.description
             runningProcess.execute()
             self.runningProcess = runningProcess
-            currentQuatum += 1
+            currentQuantum += 1
             time += 1
             if runningProcess.isTimeToInOutOperation {
                 runningProcess.executionTimes.append(Double(time))
@@ -127,8 +127,8 @@ public final class ProcessScheduler {
         output += "C"
         time += 1
         runningProcess = process
-        let lastCurrentQuantum = (runningProcess?.currentExecutionTime ?? quatum) % quatum
-        currentQuatum = 0 + lastCurrentQuantum
+        let lastCurrentQuantum = (runningProcess?.currentExecutionTime ?? quantum) % quantum
+        currentQuantum = 0 + lastCurrentQuantum
         afterChangeContext()
         executeBlockedProcess()
     }

@@ -8,31 +8,30 @@
 
 import Foundation
 
-//var proccess = [
-//    Process(id: 1, arrivalTime: 3, executionTime: 10, priority: 2),
-//    Process(id: 2, arrivalTime: 5, executionTime: 12, priority: 1),
-//        Process(id: 3, arrivalTime: 9, executionTime: 15, priority: 2),
-//        Process(id: 4, arrivalTime: 11, executionTime: 15, priority: 1),
-//        Process(id: 5, arrivalTime: 12, executionTime: 8, priority: 5,
-//                accessToInOutOperations: [2])
-//]
-
 var proccess = [
-    Process(id: 1, arrivalTime: 1, executionTime: 4, priority: 1,
-            accessToInOutOperations: [2]),
-    Process(id: 2, arrivalTime: 2, executionTime: 4, priority: 1,
-            accessToInOutOperations: [2]),
-    
-//            Process(id: 6, arrivalTime: 2, executionTime: 8, priority: 6, accessToInOutOperations: [3])
+    Process(id: 1, arrivalTime: 3, executionTime: 10, priority: 2),
+    Process(id: 2, arrivalTime: 5, executionTime: 12, priority: 1),
+        Process(id: 3, arrivalTime: 9, executionTime: 15, priority: 2),
+        Process(id: 4, arrivalTime: 11, executionTime: 15, priority: 1),
+        Process(id: 5, arrivalTime: 12, executionTime: 8, priority: 5,
+                accessToInOutOperations: [2])
 ]
+
+//var proccess = [
+//    Process(id: 1, arrivalTime: 1, executionTime: 4, priority: 1,
+//            accessToInOutOperations: [2]),
+//    Process(id: 2, arrivalTime: 2, executionTime: 4, priority: 1,
+//            accessToInOutOperations: [2]),
+//    
+////            Process(id: 6, arrivalTime: 2, executionTime: 8, priority: 6, accessToInOutOperations: [3])
+//]
 
 let processScheduller = ProcessScheduler()
 let input = ExecutionInput(processes: proccess, quantum: 3)
 let output = processScheduller.execute(input: input)
 print(output.output)
-output.processes.forEach { print($0) }
-
-print("average Time = \(output.averageWaitTime)")
+print("average wait Time = \(output.averageWaitTime)")
+print("average response Time = \(output.averageResponseTime)")
 
 //let path = "/Users/homerooliveira/College/ProcessesScheduler/ProcessScheduler/test1.txt"
 //

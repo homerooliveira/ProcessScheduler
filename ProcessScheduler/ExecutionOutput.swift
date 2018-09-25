@@ -21,23 +21,21 @@ public struct ExecutionOutput {
         let sumOfResponseTime = processes
             .compactMap { $0.executionTimes.first }
         
-        averageResponseTime = sumOfResponseTime.sum - Double(processes.count) / Double(processes.count)
+        averageResponseTime = (sumOfResponseTime.sum - Double(processes.count)) / Double(processes.count)
         
-//        let sumOfWaitingTime = processes
-//            .map { (process) in
-//                return process.executionTimes
-//                        .dropFirst()
-//                        .chunked(by: 2)
-//                        .map { $0.last! - $0.first! }
-//        }
-//        
-//        zip(sumOfResponseTime, sumOfWaitingTime)
-//            .map { (arg) -> Double in
-//                let (waitingTime, responseTime) = arg
-//                return (responseTime.sum + waitingTime) / Double(responseTime.count + 1)
-//        }
-        
-//        averageWaitTime = (sumOfResponseTime + sumOfWaitingTime) / Double(processes.count)
-        averageWaitTime = 0
+        let sumOfWaitingTime = processes
+            .map { (process) in
+                return process.executionTimes
+                        .dropFirst()
+                        .chunked(by: 2)
+                        .map { $0.last! - $0.first! }
+                
+        }
+
+        averageWaitTime = zip(sumOfResponseTime, sumOfWaitingTime)
+            .map { (arg) -> Double in
+                let (responseTime, waitingTime) = arg
+                return (responseTime + waitingTime.sum - 1) / Double(waitingTime.count + 1)
+        }.sum 
     }
 }
