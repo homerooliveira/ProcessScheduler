@@ -15,7 +15,7 @@ import ProcessSchedulerCore
 
 guard let fileUrl = Bundle.main.url(forResource: "trab-so1-teste2SR", withExtension: "txt") else { fatalError() }
 
-let input = FileReader(fileUrl: fileUrl).executionInput
+let input = readFile(from: fileUrl)
 
 let processScheduller = ProcessScheduler()
 
