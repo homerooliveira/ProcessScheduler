@@ -1,4 +1,4 @@
 language: objective-c
 xcode_project: ProcessScheduler.xcodeproj
-xcode_scheme: Dummy
+xcode_scheme: ProcessSchedulerCore
 xcode_destination: platform=iOS Simulator,OS=11.4,name=iPhone 6s

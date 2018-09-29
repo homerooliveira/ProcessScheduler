@@ -7,7 +7,7 @@
 ////
 //
 import XCTest
-@testable import Dummy
+@testable import ProcessSchedulerCore
 
 class ProcessesSchedulerTests: XCTestCase {
 

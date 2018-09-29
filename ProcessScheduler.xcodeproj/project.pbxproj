@@ -15,9 +15,9 @@
 		8D2ED6742159E52B00BF3380 /* Array+sum+average.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2ED66C2159E52A00BF3380 /* Array+sum+average.swift */; };
 		8D2ED6752159E52B00BF3380 /* ProcessScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2ED66D2159E52A00BF3380 /* ProcessScheduler.swift */; };
 		8D2ED6762159E52B00BF3380 /* Array+removeAll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2ED66E2159E52A00BF3380 /* Array+removeAll.swift */; };
-		8D2ED67F2159E5D700BF3380 /* ProcessSchedulerCoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2ED67E2159E5D700BF3380 /* ProcessSchedulerCoreTests.swift */; };
 		8D2ED6812159E5D700BF3380 /* ProcessSchedulerCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D2ED6402159E4D200BF3380 /* ProcessSchedulerCore.framework */; };
 		8D2ED6892159E67800BF3380 /* FileReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2ED6882159E67800BF3380 /* FileReader.swift */; };
+		8D7D853B21600B50002A2A57 /* ProcessSchedulerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7D853A21600B50002A2A57 /* ProcessSchedulerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,10 +42,10 @@
 		8D2ED66D2159E52A00BF3380 /* ProcessScheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessScheduler.swift; sourceTree = "<group>"; };
 		8D2ED66E2159E52A00BF3380 /* Array+removeAll.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+removeAll.swift"; sourceTree = "<group>"; };
 		8D2ED67C2159E5D700BF3380 /* ProcessSchedulerCoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProcessSchedulerCoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8D2ED67E2159E5D700BF3380 /* ProcessSchedulerCoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessSchedulerCoreTests.swift; sourceTree = "<group>"; };
 		8D2ED6802159E5D700BF3380 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D2ED6872159E60100BF3380 /* ProcessScheduler.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = ProcessScheduler.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		8D2ED6882159E67800BF3380 /* FileReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileReader.swift; sourceTree = "<group>"; };
+		8D7D853A21600B50002A2A57 /* ProcessSchedulerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessSchedulerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,7 +114,7 @@
 		8D2ED67D2159E5D700BF3380 /* ProcessSchedulerCoreTests */ = {
 			isa = PBXGroup;
 			children = (
-				8D2ED67E2159E5D700BF3380 /* ProcessSchedulerCoreTests.swift */,
+				8D7D853A21600B50002A2A57 /* ProcessSchedulerTests.swift */,
 				8D2ED6802159E5D700BF3380 /* Info.plist */,
 			);
 			path = ProcessSchedulerCoreTests;
@@ -244,7 +244,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D2ED67F2159E5D700BF3380 /* ProcessSchedulerCoreTests.swift in Sources */,
+				8D7D853B21600B50002A2A57 /* ProcessSchedulerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
