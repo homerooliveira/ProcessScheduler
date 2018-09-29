@@ -30,8 +30,8 @@ public final class ProcessScheduler {
         var output = ""
         
         while !processes.isEmpty || runningProcess != nil || !blockedProcess.isEmpty {
-            if hasArrivalProcess(at: time) {
-                let newProcess = processes.removeFirst()
+            if let index = hasArrivalProcess(at: time) {
+                let newProcess = processes.remove(at: index)
                 if runningProcess == nil {
                     changeContext(to: newProcess, &output)
                 } else if let runningProcess = self.runningProcess {
@@ -118,11 +118,20 @@ public final class ProcessScheduler {
         }
     }
     
-    func hasArrivalProcess(at time: Int) -> Bool {
+    func hasArrivalProcess(at time: Int) -> Int? {
         guard let process = processes.first else {
-            return false
+            return nil
         }
-        return process.arrivalTime + 1 <= time
+        
+        guard process.arrivalTime + 1 <= time else {
+            return nil
+        }
+        
+        let indexOfProcessWithHigherPriority = processes.dropFirst()
+                    .firstIndex(where: { $0.priority < process.priority
+                        && $0.arrivalTime == process.arrivalTime })
+        
+        return indexOfProcessWithHigherPriority ?? processes.startIndex
     }
     
     func changeContext(to process: Process?, _ output: inout String) {
