@@ -23,7 +23,7 @@ public struct Process: Equatable {
     }
     
     public var isTimeToInOutOperation: Bool {
-        return accessToInOutOperations.first(where: { $0 == currentExecutionTime }) != nil
+        return accessToInOutOperations.contains(where: { $0 == currentExecutionTime })
     }
     
     public init(id: Int,
