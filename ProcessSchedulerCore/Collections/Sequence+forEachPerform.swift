@@ -18,10 +18,47 @@ extension Sequence {
         return self
     }
     
-    func log(identifier: String = "") -> Self {
+    func log(_ identifier: String = "") -> Self {
         forEach { (element) in
             print("\(identifier) - \(element)")
         }
         return self
     }
+}
+
+extension LazySequenceProtocol {
+    func onEach(_ body: @escaping (Element) -> ())
+        -> LazyForEachSequence<Self>
+    {
+        return LazyForEachSequence(base: self,
+                                   perform: body)
+    }
+}
+
+struct LazyForEachIterator<Base: IteratorProtocol>
+    : IteratorProtocol
+{
+    mutating func next() -> Base.Element? {
+        guard let nextElement = base.next() else {
+            return nil
+        }
+        perform(nextElement)
+        return nextElement
+    }
+    var base: Base
+    let perform: (Base.Element) -> ()
+}
+
+struct LazyForEachSequence<Base: Sequence>
+    : LazySequenceProtocol
+{
+    func makeIterator()
+        -> LazyForEachIterator<Base.Iterator>
+    {
+        return LazyForEachIterator(
+            base: base.makeIterator(),
+            perform: perform)
+    }
+    let base: Base
+    let perform: (Base.Element) -> ()
 }

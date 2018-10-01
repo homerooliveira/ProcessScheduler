@@ -22,10 +22,7 @@ public final class ProcessScheduler {
     }
     
     public func execute(input: ExecutionInput) -> ExecutionOutput {
-        quantum = input.quantum
-        processes = input.processes
-        currentQuantum = 0
-        time = 1
+        resetVariables(input)
         
         var output = ""
         
@@ -94,12 +91,16 @@ public final class ProcessScheduler {
                 } else {
                     changeContext(to: nil, &output)
                 }
-                
             }
         } else {
             if !runningProcess.isFinished {
+                if runningProcess.executionTimes.count == 1 {
+                    let first = runningProcess.executionTimes.first!
+                    runningProcess.executionTimes.append(first + 1)
+                }
                 runningProcess.executionTimes.append(Double(time))
                 readyProcesses[runningProcess.priority - 1].append(runningProcess)
+                
             } else {
                 self.executedProcesses.append(runningProcess)
             }
@@ -147,7 +148,18 @@ public final class ProcessScheduler {
     func afterChangeContext() {
         guard var runningProcess = self.runningProcess else { return }
         let time = Double(self.time)
-        runningProcess.executionTimes.append(Double(time))
+        runningProcess.executionTimes.append(time)
         self.runningProcess = runningProcess
+    }
+    
+    fileprivate func resetVariables(_ input: ExecutionInput) {
+        quantum = input.quantum
+        processes = input.processes
+        currentQuantum = 0
+        time = 1
+        blockedProcess = []
+        executedProcesses = []
+        runningProcess = nil
+        readyProcesses = Array(repeating: [], count: 9)
     }
 }
