@@ -26,6 +26,10 @@ public struct Process: Equatable {
         return accessToInOutOperations.contains(where: { $0 == currentExecutionTime })
     }
     
+    public var responseTime: Double {
+        return executionTimes.first.map { $0 - Double(arrivalTime) } ?? 0
+    }
+    
     public init(id: Int,
                 arrivalTime: Int,
                 executionTime: Int,
