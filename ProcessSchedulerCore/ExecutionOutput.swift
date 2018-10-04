@@ -23,21 +23,20 @@ public struct ExecutionOutput {
         let sumOfResponseTime = processes
             .map { $0.responseTime }
         
-        averageResponseTime = sumOfResponseTime.sum / numberOfProcesses
+        averageResponseTime = sumOfResponseTime.sum() / numberOfProcesses
         
         let sumOfWaitingTime = processes
             .map { (process) in
                 return process.executionTimes
                         .chunked(by: 2)
-                        .log()
                         .map { $0.last! - $0.first! }
             }
         
         let totalOfWaitingTime = zip(sumOfResponseTime, sumOfWaitingTime)
             .lazy
             .map { $1 + [$0] }
-            .map { $0.sum }
-            .sum
+            .map { $0.sum() }
+            .sum()
 
         averageWaitTime = totalOfWaitingTime / numberOfProcesses
     }

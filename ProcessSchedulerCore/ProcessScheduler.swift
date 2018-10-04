@@ -100,7 +100,6 @@ public final class ProcessScheduler {
                 }
                 runningProcess.executionTimes.append(Double(time))
                 readyProcesses[runningProcess.priority - 1].append(runningProcess)
-                
             } else {
                 self.executedProcesses.append(runningProcess)
             }

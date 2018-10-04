@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8D2ED6502159E4D300BF3380 /* ProcessSchedulerCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D2ED6422159E4D300BF3380 /* ProcessSchedulerCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8D2ED66F2159E52A00BF3380 /* ExecutionOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2ED6672159E52A00BF3380 /* ExecutionOutput.swift */; };
 		8D2ED6702159E52A00BF3380 /* ExecutionInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2ED6682159E52A00BF3380 /* ExecutionInput.swift */; };
 		8D2ED6722159E52A00BF3380 /* Process.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2ED66A2159E52A00BF3380 /* Process.swift */; };
@@ -89,13 +88,13 @@
 		8D2ED6412159E4D300BF3380 /* ProcessSchedulerCore */ = {
 			isa = PBXGroup;
 			children = (
+				8D2ED6422159E4D300BF3380 /* ProcessSchedulerCore.h */,
 				8D2ED6882159E67800BF3380 /* FileReader.swift */,
 				8D2ED6682159E52A00BF3380 /* ExecutionInput.swift */,
 				8D2ED6672159E52A00BF3380 /* ExecutionOutput.swift */,
 				8D2ED66A2159E52A00BF3380 /* Process.swift */,
 				8D2ED66D2159E52A00BF3380 /* ProcessScheduler.swift */,
 				8D2ED6772159E56A00BF3380 /* Collections */,
-				8D2ED6422159E4D300BF3380 /* ProcessSchedulerCore.h */,
 				8D2ED6432159E4D300BF3380 /* Info.plist */,
 			);
 			path = ProcessSchedulerCore;
@@ -127,7 +126,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D2ED6502159E4D300BF3380 /* ProcessSchedulerCore.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

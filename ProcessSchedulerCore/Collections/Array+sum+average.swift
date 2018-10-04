@@ -8,15 +8,15 @@
 
 import Foundation
 
-extension Sequence where Iterator.Element: BinaryFloatingPoint {
+extension Collection where Iterator.Element: BinaryFloatingPoint {
     var average: Element {
-        return reduce(Element(0), +) / Element(underestimatedCount)
+        return reduce(Element(0), +) / Element(count)
     }
-}
+} 
 
 extension Sequence where Iterator.Element: Numeric {
-    var sum: Element {
-        return reduce(0, +)
+    func sum(initialValue: Element = 0) -> Element {
+        return reduce(initialValue, +)
     }
 }
 
