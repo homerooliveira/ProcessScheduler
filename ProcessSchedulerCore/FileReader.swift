@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Lê o arquivo e retorna um Objeto contendo os dados.
 public func readFile(from url: URL) -> ExecutionInput {
     let text = (try? String(contentsOf: url, encoding: .utf8)) ?? ""
     

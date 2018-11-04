@@ -8,22 +8,39 @@
 
 public final class ProcessScheduler {
     
+    /// Representa o tempo global.
     private var time = 1
+    
+    /// Representa os processos que já foram executados.
     var executedProcesses: [Process] = []
+    
+    /// Representa os processo que foram lidos do arquivo contendo os dados de entrada
     var processes: [Process] = []
+    
+    /// Representa as filas de espera com prioridade,onde cada indice + 1 representa uma prioridade.
     var readyProcesses: [[Process]] = Array(repeating: [], count: 9)
+    
+    /// Representa o processo que está sendo executado
     var runningProcess: Process?
+    
+    /// Representa os processos que estão bloqueado pois estão fazendo operações de E/S
     var blockedProcess: [Process] = []
+    
+    /// Representa a fatia de tempo que foi lida do arquivo contendo os dados de entrada.
     var quantum: Int = 3
+    
+    /// Representa o quantum atual do processo que está executando.
     var currentQuantum: Int = 0
+    
+    ///Representa a fatia de tempo para E/S que foi lida do arquivo contendo os dados de entrada.
     var inOutQuantum: Int = 4
     
     public init() {
     }
     
+    /// Executa a simulação até o final e retorna o resultado da execução.
     public func execute(input: ExecutionInput) -> ExecutionOutput {
         resetVariables(input)
-        
         var output = ""
         
         while !processes.isEmpty || runningProcess != nil || !blockedProcess.isEmpty {
@@ -47,6 +64,9 @@ public final class ProcessScheduler {
         return ExecutionOutput(processes: executedProcesses.sorted(by: { $0.id < $1.id }), output: output)
     }
     
+    /// Executa os processos que estão no array de bloqueados
+    /// e remove eles da lista de bloqueados caso eles terminaram o seu tempo de E/S
+    /// e é adicionado para lista de espera.
     func executeBlockedProcess() {
         var newBlockedProcesses = blockedProcess.map { $0.executeInOutOperation() }
         let suffix = newBlockedProcesses.partition { $0.currentExecutionInOut == inOutQuantum }
@@ -60,6 +80,7 @@ public final class ProcessScheduler {
         self.blockedProcess = newBlockedProcesses
     }
     
+    /// É verificado se existe algum processo, se não é mostrado caracter "-"
     func executeCurrentProcess( _ output: inout String) {
         if var runningProcess = runningProcess {
             runProcess(&runningProcess, &output)
@@ -76,6 +97,7 @@ public final class ProcessScheduler {
         }
     }
     
+    /// Executa-se o processo e é verficado se o proceso entra em operação de E/S
     func runProcess(_ runningProcess: inout Process, _ output: inout String) {
         if !runningProcess.isFinished && currentQuantum < quantum {
             output += runningProcess.id.description
@@ -118,6 +140,7 @@ public final class ProcessScheduler {
         }
     }
     
+    /// É pesquisado se existe algum processo que chegou neste instante de tempo.
     func hasArrivalProcess(at time: Int) -> Int? {
         guard let process = processes.first else {
             return nil
@@ -134,6 +157,7 @@ public final class ProcessScheduler {
         return indexOfProcessWithHigherPriority ?? processes.startIndex
     }
     
+    /// Faz a troca de contexto para o processo ou para null.
     func changeContext(to process: Process?, _ output: inout String) {
         output += "C"
         time += 1
@@ -144,6 +168,7 @@ public final class ProcessScheduler {
         executeBlockedProcess()
     }
     
+    /// Adiciona o tempo de entrada na lista de execução no processo que está rodando.
     func afterChangeContext() {
         guard var runningProcess = self.runningProcess else { return }
         let time = Double(self.time)
@@ -151,6 +176,7 @@ public final class ProcessScheduler {
         self.runningProcess = runningProcess
     }
     
+    /// Atualiza as variaveis para os valores inicias
     fileprivate func resetVariables(_ input: ExecutionInput) {
         quantum = input.quantum
         processes = input.processes

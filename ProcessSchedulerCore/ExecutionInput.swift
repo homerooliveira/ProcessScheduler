@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Representa a entrada de uma Execução
 public struct ExecutionInput {
     public let processes: [Process]
     public let quantum: Int

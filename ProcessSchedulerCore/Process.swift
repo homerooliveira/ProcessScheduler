@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Representa o processo.
 public struct Process: Equatable {
     public let id: Int
     public let arrivalTime: Int

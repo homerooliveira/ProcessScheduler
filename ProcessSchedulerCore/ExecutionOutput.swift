@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Representa saida de execução
 public struct ExecutionOutput {
     public let processes: [Process]
     public let output: String
